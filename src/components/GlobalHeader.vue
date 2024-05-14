@@ -22,22 +22,9 @@
       </a-menu>
     </a-col>
     <a-col flex="100px">
-      <a-dropdown>
-        <a-button shape="round">{{
-          store.state.user?.loginUser?.userAccount ?? "未登录"
-        }}</a-button>
-        <template #content>
-          <a-doption @click="router.push({ path: '/dev' })">开发者</a-doption>
-          <a-doption
-            @click="store.dispatch('user/logout')"
-            v-if="store.state.user.loginUser.userAccount != '未登录'"
-            >退出登录</a-doption
-          >
-          <a-doption @click="router.push({ path: '/user/login' })" v-else
-            >去登录</a-doption
-          >
-        </template>
-      </a-dropdown>
+      <div>
+        {{ store.state.user?.loginUser?.userName ?? "未登录" }}
+      </div>
     </a-col>
   </a-row>
 </template>
@@ -81,7 +68,7 @@ console.log();
 
 setTimeout(() => {
   store.dispatch("user/getLoginUser", {
-    userName: "管理员",
+    userName: "鱼皮管理员",
     userRole: ACCESS_ENUM.ADMIN,
   });
 }, 3000);
@@ -91,8 +78,6 @@ const doMenuClick = (key: string) => {
     path: key,
   });
 };
-
-const popupVisible = ref(false);
 </script>
 
 <style scoped>

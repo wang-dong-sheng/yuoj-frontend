@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id="userRegisterView">
     <h2 style="margin-bottom: 16px">用户注册</h2>
     <a-form
@@ -83,3 +84,9 @@ const handleSubmit = async () => {
   }
 };
 </script>
+=======
+  <div class="about">
+    <h1>用户注册页，请自行实现</h1>
+  </div>
+</template>
+>>>>>>> 5d4c8a6 (前端基本完成)

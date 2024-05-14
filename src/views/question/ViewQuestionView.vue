@@ -208,7 +208,7 @@ import {
   QuestionControllerService,
   QuestionSubmitAddRequest,
   QuestionVO,
-} from "../../../generated/services/question";
+} from "../../../generated";
 
 const currentTab = ref(0);
 
