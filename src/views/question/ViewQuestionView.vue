@@ -74,11 +74,8 @@ import { onMounted, ref, watchEffect, withDefaults, defineProps } from "vue";
 import message from "@arco-design/web-vue/es/message";
 import CodeEditor from "@/components/CodeEditor.vue";
 import MdViewer from "@/components/MdViewer.vue";
-import {
-  QuestionControllerService,
-  QuestionSubmitAddRequest, QuestionSubmitControllerService,
-  QuestionVO,
-} from "../../../generated";
+import {QuestionControllerService, QuestionSubmitAddRequest, QuestionVO} from "../../../generated";
+
 
 interface Props {
   id: string;
@@ -115,7 +112,7 @@ const doSubmit = async () => {
   }
 
   //await QuestionControllerService.doQuestionSubmitUsingPost
-  const res = await QuestionSubmitControllerService.doQuestionSubmitUsingPost({
+  const res = await QuestionControllerService.doQuestionSubmitUsingPost({
     ...form.value,
     questionId: question.value.id,
   });

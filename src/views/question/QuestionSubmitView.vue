@@ -47,7 +47,7 @@
 import { onMounted, ref, watchEffect } from "vue";
 import {
   Question,
-  QuestionControllerService, QuestionSubmitControllerService,
+  QuestionControllerService,
   QuestionSubmitQueryRequest,
 } from "../../../generated";
 import message from "@arco-design/web-vue/es/message";
@@ -67,7 +67,7 @@ const searchParams = ref<QuestionSubmitQueryRequest>({
 
 const loadData = async () => {
   //const res = await QuestionControllerService.listQuestionSubmitByPageUsingPost
-  const res = await QuestionSubmitControllerService.listQuestionSubmitByPageUsingPost(
+  const res = await QuestionControllerService.listQuestionSubmitByPageUsingPost(
     {
       ...searchParams.value,
       sortField: "createTime",
