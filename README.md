@@ -3,7 +3,11 @@
 ## 根据后台生成代码
 
 ```shell
-openapi --input http://localhost:8121/api/v2/api-docs --output ./generated --client axios
+openapi --input http://localhost:8101/api/user/v2/api-docs?group=default --output ./generated/services/user --client axios
+openapi --input http://localhost:8101/api/question/v2/api-docs?group=default --output ./generated/services/question --client axios
+openapi --input http://localhost:8101/api/judge/v2/api-docs?group=default --output ./generated/services/judge --client axios
+
+
 ```
 
 

@@ -74,7 +74,7 @@ import { onMounted, ref, watchEffect, withDefaults, defineProps } from "vue";
 import message from "@arco-design/web-vue/es/message";
 import CodeEditor from "@/components/CodeEditor.vue";
 import MdViewer from "@/components/MdViewer.vue";
-import {QuestionControllerService, QuestionSubmitAddRequest, QuestionVO} from "../../../generated";
+import {QuestionControllerService, QuestionSubmitAddRequest, QuestionVO} from "../../../generated/services/question";
 
 
 interface Props {
