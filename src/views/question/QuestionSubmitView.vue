@@ -33,9 +33,30 @@
       }"
       @page-change="onPageChange"
     >
-      <template #judgeInfo="{ record }">
-        {{ JSON.stringify(record.judgeInfo) }}
+      <template #judgeInfoMeesage="{ record }">
+        <!--        {{ JSON.stringify(record.judgeInfo) }}-->
+        <a-tag :color="getMessageColor(record.judgeInfo.message)"
+          >{{ record.judgeInfo.message ?? "未知" }}
+        </a-tag>
+        <!--        <a-tag>{{ record.judgeInfo.time ?? "未知" }} </a-tag>-->
+        <!--        <a-tag>{{ record.judgeInfo.memory ?? "未知" }} </a-tag>-->
       </template>
+
+      <template #judgeInfoTime="{ record }">
+        <a-tag>{{ record.judgeInfo.time ?? "N/A" }} </a-tag>
+      </template>
+
+      <template #judgeInfoMemory="{ record }">
+        <a-tag>{{ getMemory(record.judgeInfo.memory) }} </a-tag>
+      </template>
+
+      <template #status="{ record }">
+        <a-tag v-if="record.status === 0" color="orange"> 等待中 </a-tag>
+        <a-tag v-else-if="record.status === 1" color="blue"> 判题中 </a-tag>
+        <a-tag v-else-if="record.status === 2" color="green"> 成功 </a-tag>
+        <a-tag v-else-if="record.status === 3" color="orange">失败 </a-tag>
+      </template>
+
       <template #createTime="{ record }">
         {{ moment(record.createTime).format("YYYY-MM-DD") }}
       </template>
@@ -107,11 +128,24 @@ const columns = [
   },
   {
     title: "判题信息",
-    slotName: "judgeInfo",
+    children: [
+      {
+        title: "信息",
+        slotName: "judgeInfoMeesage",
+      },
+      {
+        title: "时间",
+        slotName: "judgeInfoTime",
+      },
+      {
+        title: "内存",
+        slotName: "judgeInfoMemory",
+      },
+    ],
   },
   {
     title: "判题状态",
-    dataIndex: "status",
+    slotName: "status",
   },
   {
     title: "题目 id",
@@ -156,6 +190,37 @@ const doSubmit = () => {
     current: 1,
   };
 };
+
+function getMessageColor(status: string) {
+  if (status === "Accepted") {
+    return "green";
+  } else if (status === "Wrong Answer") {
+    return "red";
+  } else {
+    return "orange";
+  }
+}
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+function getMemory(text: string) {
+  const size = Number(text);
+  if (isNaN(size)) {
+    return "Invalid input";
+  }
+
+  if (size === 0) {
+    return "N/A";
+  }
+  const units = ["B", "KB", "MB", "GB", "TB"];
+  let unitIndex = 0;
+
+  let memory = size;
+  while (memory >= 1024 && unitIndex < units.length - 1) {
+    memory /= 1024;
+    unitIndex++;
+  }
+
+  return `${memory.toFixed(2)} ${units[unitIndex]}`;
+}
 </script>
 
 <style scoped>
