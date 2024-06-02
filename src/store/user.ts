@@ -23,6 +23,16 @@ export default {
         });
       }
     },
+
+    async logout({ commit }) {
+      const res = await UserControllerService.userLogoutUsingPost();
+      if (res.code === 0) {
+        commit("updateUser", {
+          userAccount: "未登录",
+          userRole: ACCESS_ENUM.NOT_LOGIN,
+        });
+      }
+    },
   },
   mutations: {
     updateUser(state, payload) {

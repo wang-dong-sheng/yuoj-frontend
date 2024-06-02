@@ -22,9 +22,15 @@
       </a-menu>
     </a-col>
     <a-col flex="100px">
-      <div>
-        {{ store.state.user?.loginUser?.userAccount ?? "未登录" }}
-      </div>
+      <a-dropdown>
+        <a-button shape="round">{{
+          store.state.user?.loginUser?.userAccount ?? "未登录"
+        }}</a-button>
+        <template #content>
+          <a-doption @click="router.push({ path: '/dev' })">开发者</a-doption>
+          <a-doption>退出登录</a-doption>
+        </template>
+      </a-dropdown>
     </a-col>
   </a-row>
 </template>
@@ -78,6 +84,8 @@ const doMenuClick = (key: string) => {
     path: key,
   });
 };
+
+const popupVisible = ref(false);
 </script>
 
 <style scoped>

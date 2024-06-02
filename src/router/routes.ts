@@ -11,6 +11,7 @@ import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
 import QuestionsView from "@/views/question/QuestionsView.vue";
 import QuestionSubmitView from "@/views/question/QuestionSubmitView.vue";
 import ViewQuestionView from "@/views/question/ViewQuestionView.vue";
+import DevView from "@/views/dev/DevView.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -96,6 +97,15 @@ export const routes: Array<RouteRecordRaw> = [
     name: "无权限",
     component: NoAuthView,
     meta: {
+      hideInMenu: true,
+    },
+  },
+  {
+    path: "/dev",
+    name: "开发者",
+    component: DevView,
+    meta: {
+      access: ACCESS_ENUM.USER,
       hideInMenu: true,
     },
   },
