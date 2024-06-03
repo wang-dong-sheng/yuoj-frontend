@@ -2,6 +2,7 @@
 import { StoreOptions } from "vuex";
 import ACCESS_ENUM from "@/access/accessEnum";
 import { UserControllerService } from "../../generated/services/user";
+import router from "@/router";
 
 export default {
   namespaced: true,
@@ -31,6 +32,7 @@ export default {
           userAccount: "未登录",
           userRole: ACCESS_ENUM.NOT_LOGIN,
         });
+        await router.push("/user/login");
       }
     },
   },

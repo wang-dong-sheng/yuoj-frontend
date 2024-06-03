@@ -28,7 +28,14 @@
         }}</a-button>
         <template #content>
           <a-doption @click="router.push({ path: '/dev' })">开发者</a-doption>
-          <a-doption>退出登录</a-doption>
+          <a-doption
+            @click="store.dispatch('user/logout')"
+            v-if="store.state.user.loginUser.userAccount != '未登录'"
+            >退出登录</a-doption
+          >
+          <a-doption @click="router.push({ path: '/user/login' })" v-else
+            >去登录</a-doption
+          >
         </template>
       </a-dropdown>
     </a-col>
