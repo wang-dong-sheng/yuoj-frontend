@@ -1,14 +1,13 @@
 // initial state
 import { StoreOptions } from "vuex";
 import ACCESS_ENUM from "@/access/accessEnum";
-import { UserControllerService } from "../../generated/services/user";
-import router from "@/router";
+import { UserControllerService } from "../../generated";
 
 export default {
   namespaced: true,
   state: () => ({
     loginUser: {
-      userAccount: "未登录",
+      userName: "未登录",
     },
   }),
   actions: {
@@ -22,17 +21,6 @@ export default {
           ...state.loginUser,
           userRole: ACCESS_ENUM.NOT_LOGIN,
         });
-      }
-    },
-
-    async logout({ commit }) {
-      const res = await UserControllerService.userLogoutUsingPost();
-      if (res.code === 0) {
-        commit("updateUser", {
-          userAccount: "未登录",
-          userRole: ACCESS_ENUM.NOT_LOGIN,
-        });
-        await router.push("/user/login");
       }
     },
   },

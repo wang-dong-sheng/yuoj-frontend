@@ -34,12 +34,7 @@
       <template #acceptedRate="{ record }">
         {{
           `${
-            // record.submitNum ? (record.acceptedNum / record.submitNum)*100 : "0"
-            record.submitNum
-              ? parseFloat(
-                  ((record.acceptedNum / record.submitNum) * 100).toFixed(1)
-                )
-              : "0"
+            record.submitNum ? record.acceptedNum / record.submitNum : "0"
           }% (${record.acceptedNum}/${record.submitNum})`
         }}
       </template>
@@ -64,7 +59,7 @@ import {
   Question,
   QuestionControllerService,
   QuestionQueryRequest,
-} from "../../../generated/services/question";
+} from "../../../generated";
 import message from "@arco-design/web-vue/es/message";
 import * as querystring from "querystring";
 import { useRouter } from "vue-router";

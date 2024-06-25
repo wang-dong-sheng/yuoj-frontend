@@ -18,19 +18,8 @@
         />
       </a-form-item>
       <a-form-item>
-        <a-button
-          type="primary"
-          html-type="submit"
-          style="width: 120px; margin-left: 20px"
-        >
+        <a-button type="primary" html-type="submit" style="width: 120px">
           登录
-        </a-button>
-        <a-button
-          type="primary"
-          href="register"
-          style="width: 120px; margin-left: 120px"
-        >
-          注册
         </a-button>
       </a-form-item>
     </a-form>
@@ -39,10 +28,7 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import {
-  UserControllerService,
-  UserLoginRequest,
-} from "../../../generated/services/user";
+import { UserControllerService, UserLoginRequest } from "../../../generated";
 import message from "@arco-design/web-vue/es/message";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
