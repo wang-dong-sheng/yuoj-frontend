@@ -86,23 +86,6 @@ deleteRequest: DeleteRequest,
     }
 
     /**
-     * downloadFile
-     * @returns any OK
-     * @throws ApiError
-     */
-    public static downloadFileUsingGet(): CancelablePromise<any> {
-        return __request(OpenAPI, {
-            method: 'GET',
-            url: '/api/user/file/download',
-            errors: {
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                404: `Not Found`,
-            },
-        });
-    }
-
-    /**
      * getUserById
      * @param id id
      * @returns BaseResponse_User_ OK

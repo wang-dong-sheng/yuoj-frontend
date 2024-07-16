@@ -10,6 +10,7 @@ export type QuestionSubmit = {
     isDelete?: number;
     judgeInfo?: string;
     language?: string;
+    modifyCode?: string;
     questionId?: number;
     status?: number;
     updateTime?: string;

@@ -33,5 +33,6 @@ export type { UserVO } from './models/UserVO';
 export type { View } from './models/View';
 
 export { BasicErrorControllerService } from './services/BasicErrorControllerService';
+export { FileControllerService } from './services/FileControllerService';
 export { UserControllerService } from './services/UserControllerService';
 export { UserInnerControllerService } from './services/UserInnerControllerService';

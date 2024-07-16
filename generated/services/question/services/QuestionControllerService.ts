@@ -10,6 +10,7 @@ import type { BaseResponse_Page_QuestionSubmitVO_ } from '../models/BaseResponse
 import type { BaseResponse_Page_QuestionVO_ } from '../models/BaseResponse_Page_QuestionVO_';
 import type { BaseResponse_Question_ } from '../models/BaseResponse_Question_';
 import type { BaseResponse_QuestionVO_ } from '../models/BaseResponse_QuestionVO_';
+import type { BaseResponse_string_ } from '../models/BaseResponse_string_';
 import type { DeleteRequest } from '../models/DeleteRequest';
 import type { OnlineQuestionSubmitAddRequest } from '../models/OnlineQuestionSubmitAddRequest';
 import type { QuestionAddRequest } from '../models/QuestionAddRequest';
@@ -173,6 +174,29 @@ questionQueryRequest: QuestionQueryRequest,
             method: 'POST',
             url: '/api/question/list/page/vo',
             body: questionQueryRequest,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
+    /**
+     * modifyCode
+     * @param id id
+     * @returns BaseResponse_string_ OK
+     * @throws ApiError
+     */
+    public static modifyCodeUsingGet(
+id?: number,
+): CancelablePromise<BaseResponse_string_> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/question/modify',
+            query: {
+                'id': id,
+            },
             errors: {
                 401: `Unauthorized`,
                 403: `Forbidden`,
